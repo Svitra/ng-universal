@@ -1,10 +1,11 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {ToolbarComponent} from './toolbar/toolbar.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
 import {RouterModule} from '@angular/router';
+import {BookService} from '../book/book.service';
 
 @NgModule({
   imports: [
@@ -13,8 +14,9 @@ import {RouterModule} from '@angular/router';
   ],
   declarations: [ToolbarComponent, NavigationComponent, HomeComponent],
   exports: [
+    CommonModule,
     ToolbarComponent, NavigationComponent,
-    MatToolbarModule, MatSidenavModule, MatIconModule, MatButtonModule]
+    MatToolbarModule, MatSidenavModule, MatIconModule, MatButtonModule, MatCardModule]
 })
 export class SharedModule {
   /**
@@ -24,7 +26,7 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       // put here providers of singleton services from ALL modules including this shared one
-      providers: []
+      providers: [BookService]
     };
   }
 }

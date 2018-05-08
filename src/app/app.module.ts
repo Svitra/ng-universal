@@ -8,6 +8,7 @@ import {SharedModule} from './shared/shared.module';
 import {RouterModule} from '@angular/router';
 import {routes} from './shared/routes/routes';
 import {BookModule} from './book/book.module';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {BookModule} from './book/book.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     SharedModule.forRoot(),
     RouterModule.forRoot(routes),
