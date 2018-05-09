@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {BookService} from '../book.service';
-import {makeStateKey, TransferState} from '@angular/platform-browser';
+import {makeStateKey, Meta, Title, TransferState} from '@angular/platform-browser';
 import {Book} from '../book';
 import {of as observableOf} from 'rxjs/observable/of';
 import {tap} from 'rxjs/operators';
@@ -14,7 +14,10 @@ import {isPlatformServer} from '@angular/common';
 export class BookOverviewComponent implements OnInit {
   books$;
 
-  constructor(private book: BookService, private transferState: TransferState, @Inject(PLATFORM_ID) private platformId) {
+  constructor(private book: BookService, private transferState: TransferState, @Inject(PLATFORM_ID) private platformId,
+              private title: Title, private meta: Meta) {
+    this.title.setTitle('Book overview');
+    this.meta.updateTag({name: 'description', content: 'Overview over books in the library'});
   }
 
   ngOnInit() {
