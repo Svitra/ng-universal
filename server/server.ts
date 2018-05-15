@@ -18,10 +18,11 @@ app.get('/api/book', (req, res) => {
 
 const indexHtml = readFileSync(__dirname + '/../dist/index.html', 'utf-8').toString();
 
+// serve js, css, ico, etc. files required by /../dist/index.html
 app.get('*.*', express.static(__dirname + '/../dist', {
   maxAge: '1y'
 }));
-
+// pre-render the content of the requested route
 app.route('*').get((req, res) => {
   renderModuleFactory(AppServerModuleNgFactory, {
     document: indexHtml,

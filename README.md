@@ -78,3 +78,24 @@ npm start
 
 This npm script starts the backend server on port `9000` and the frontend development server on port `4200`
 which proxies all REST calls to the backend server. Go to [http://localhost:4200](http://localhost:4200)  
+
+### Build an Universal bundle and pre-render while serving the application
+
+Build an Universal bundle of the application:  
+```
+npm run build:server-app
+```
+The bundle you can now find in `dist-server`.
+
+Build the regular frontend application:  
+```
+npm run build
+```
+The build output you can now find in `dist`.
+
+Start the server which serves the `/api/book` endpoint and renders routes on the fly:
+```
+npm run server
+```
+
+Go to [http://localhost:4200/books](http://localhost:4200/books) and view the (server side rendered) page source.
